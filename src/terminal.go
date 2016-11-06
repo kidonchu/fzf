@@ -919,6 +919,9 @@ func keyMatch(key int, event tui.Event) bool {
 }
 
 func quoteEntry(entry string) string {
+	if util.IsWindows() {
+		return `"` + strings.Replace(entry, "\"", "\\\"", -1) + `"`
+	}
 	return "'" + strings.Replace(entry, "'", "'\\''", -1) + "'"
 }
 
